@@ -1,4 +1,4 @@
-# Python profiling tools. 
+# Python Profiling Tools
 
 + **Deterministic profilers** can gather high-resolution profiling information but they often they have high overhead. If the application has large number of function calls,
   especially with very small execution time, the profiler will end up collecting lot of records which will result into considerable slowdown in application execution.
