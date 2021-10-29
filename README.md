@@ -8,7 +8,7 @@ UCSB CS263 Project for Fall 2021
 
 # Project Timeline 
 - [x] **10/13** before 9am **[Project Vision Statement]
-- [x] **10/29** Github Friday 5 pm week 5 (**Survey week**, **Simulator installation**, **Decide what to implement/code**)
+- [x] **10/29** Github Friday 5 pm week 5 (**Survey week**, **Simulator installation**)
 - [x] **11/05**  Github Friday 5 pm week 6 (implementation week 1)
 - [x] **11/12** Github Friday 5 pm week 7 (implementation week 2)
 - [x] **11/19** Github Friday 5 pm week 8 (implementation week 3, profiling + Empirical evaluation, in-class presentation slides)
