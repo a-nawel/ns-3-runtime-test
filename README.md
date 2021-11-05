@@ -23,6 +23,12 @@ UCSB CS263 Project for Fall 2021
 > + Add `Python_profile_survey.md` to `surveys/`. 
 > + Add `ns3_basics_survey.md` to `surveys/`. 
 
+* **11/5**: 
+> + Add 'second.py' to `examples/` (simulated network scenario 1). 
+> + Add 'third.py' to `examples/` (simulated network scenario 2).
+> Note: the above two .py files use deterministic profiling tool in Python to examine the runtime.
+
+
 * **TODO**
 > - [x] study different python profiling tools
 > - [x] study different C++ profiling tools
