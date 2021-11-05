@@ -25,7 +25,7 @@ UCSB CS263 Project for Fall 2021
 
 * **11/5**: 
 > + Add `scenario1.py` to `examples/` (simulated network scenario 1). 
-> + Add `scenario1.py` to `examples/` (simulated network scenario 2).
+> + Add `scenario2.py` to `examples/` (simulated network scenario 2).
 > + The above two .py files use deterministic profiling tool (cProfile) in Python to examine the runtime.
 
 
