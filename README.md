@@ -28,9 +28,12 @@ UCSB CS263 Project for Fall 2021
 > + Add `scenario2.py` to `examples/` (simulated network scenario 2).
 > + The above two .py files use deterministic profiling tool (cProfile) in Python to examine the runtime.
 
+* **11/12**: 
+> + Add `ReadingNotes.odt` about Python binding on NS3.
+> + Try out C++ profiler Oprofile and Python memory Profiler.
 
-* **TODO**
+
+* **Continued**
 > - [x] study different python profiling tools
 > - [x] study different C++ profiling tools
-> - [x] implement a simulated network scenario in C++ and Python binding
 
