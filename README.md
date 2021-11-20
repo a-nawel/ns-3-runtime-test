@@ -32,6 +32,9 @@ UCSB CS263 Project for Fall 2021
 > + Add `ReadingNotes.odt` about Python binding on NS3.
 > + Try out C++ profiler Oprofile and Python memory Profiler.
 
+* **11/19**: 
+> + Add Python profiler results to `results/Python` (time & memory)
+
 
 * **Continued**
 > - [x] study different python profiling tools
