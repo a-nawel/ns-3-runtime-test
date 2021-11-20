@@ -1,0 +1,76 @@
+Timer unit: 1e-06 s
+
+Total time: 0.231029 s
+File: examples/tutorial/second2.py
+Function: main at line 36
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    36                                           def main():
+    37         1        257.0    257.0      0.1  	cmd = ns.core.CommandLine()
+    38         1          2.0      2.0      0.0  	cmd.nCsma = 3
+    39         1          1.0      1.0      0.0  	cmd.verbose = "True"
+    40         1         24.0     24.0      0.0  	cmd.AddValue("nCsma", "Number of \"extra\" CSMA nodes/devices")
+    41         1          4.0      4.0      0.0  	cmd.AddValue("verbose", "Tell echo applications to log if true")
+    42         1         11.0     11.0      0.0  	cmd.Parse(sys.argv)
+    43                                           
+    44         1          1.0      1.0      0.0  	nCsma = int(cmd.nCsma)
+    45         1          1.0      1.0      0.0  	verbose = cmd.verbose
+    46                                           
+    47         1          1.0      1.0      0.0  	if verbose == "True":
+    48         1         35.0     35.0      0.0  		ns.core.LogComponentEnable("UdpEchoClientApplication", ns.core.LOG_LEVEL_INFO)
+    49         1         12.0     12.0      0.0  		ns.core.LogComponentEnable("UdpEchoServerApplication", ns.core.LOG_LEVEL_INFO)
+    50         1          2.0      2.0      0.0  		nCsma = 1 if int(nCsma) == 0 else int(nCsma)
+    51                                           
+    52         1        254.0    254.0      0.1  	p2pNodes = ns.network.NodeContainer()
+    53         1        111.0    111.0      0.0  	p2pNodes.Create(2)
+    54                                           
+    55         1          4.0      4.0      0.0  	csmaNodes = ns.network.NodeContainer()
+    56         1        237.0    237.0      0.1  	csmaNodes.Add(p2pNodes.Get(1))
+    57         1         29.0     29.0      0.0  	csmaNodes.Create(nCsma)
+    58                                           
+    59         1         10.0     10.0      0.0  	pointToPoint = ns.point_to_point.PointToPointHelper()
+    60         1         32.0     32.0      0.0  	pointToPoint.SetDeviceAttribute("DataRate", ns.core.StringValue("5Mbps"))
+    61         1         18.0     18.0      0.0  	pointToPoint.SetChannelAttribute("Delay", ns.core.StringValue("2ms"))
+    62                                           
+    63         1        169.0    169.0      0.1  	p2pDevices = pointToPoint.Install(p2pNodes)
+    64                                           
+    65         1         10.0     10.0      0.0  	csma = ns.csma.CsmaHelper()
+    66         1         15.0     15.0      0.0  	csma.SetChannelAttribute("DataRate", ns.core.StringValue("100Mbps"))
+    67         1        463.0    463.0      0.2  	csma.SetChannelAttribute("Delay", ns.core.TimeValue(ns.core.NanoSeconds(6560)))
+    68                                           
+    69         1      20142.0  20142.0      8.7  	csmaDevices = csma.Install(csmaNodes)
+    70                                           
+    71         1        527.0    527.0      0.2  	stack = ns.internet.InternetStackHelper()
+    72         1       1168.0   1168.0      0.5  	stack.Install(p2pNodes.Get(0))
+    73         1       1324.0   1324.0      0.6  	stack.Install(csmaNodes)
+    74                                           
+    75         1        496.0    496.0      0.2  	address = ns.internet.Ipv4AddressHelper()
+    76         1         25.0     25.0      0.0  	address.SetBase(ns.network.Ipv4Address("10.1.1.0"), ns.network.Ipv4Mask("255.255.255.0"))
+    77         1       1011.0   1011.0      0.4  	p2pInterfaces = address.Assign(p2pDevices)
+    78                                           
+    79         1         23.0     23.0      0.0  	address.SetBase(ns.network.Ipv4Address("10.1.2.0"), ns.network.Ipv4Mask("255.255.255.0"))
+    80         1        535.0    535.0      0.2  	csmaInterfaces = address.Assign(csmaDevices)
+    81                                           
+    82         1         30.0     30.0      0.0  	echoServer = ns.applications.UdpEchoServerHelper(9)
+    83                                           
+    84         1         60.0     60.0      0.0  	serverApps = echoServer.Install(csmaNodes.Get(nCsma))
+    85         1         17.0     17.0      0.0  	serverApps.Start(ns.core.Seconds(1.0))
+    86         1          7.0      7.0      0.0  	serverApps.Stop(ns.core.Seconds(10.0))
+    87                                           
+    88         1         26.0     26.0      0.0  	echoClient = ns.applications.UdpEchoClientHelper(csmaInterfaces.GetAddress(nCsma), 9)
+    89         1          6.0      6.0      0.0  	echoClient.SetAttribute("MaxPackets", ns.core.UintegerValue(1))
+    90         1         17.0     17.0      0.0  	echoClient.SetAttribute("Interval", ns.core.TimeValue(ns.core.Seconds (1.0)))
+    91         1          4.0      4.0      0.0  	echoClient.SetAttribute("PacketSize", ns.core.UintegerValue(1024))
+    92                                           
+    93         1         46.0     46.0      0.0  	clientApps = echoClient.Install(p2pNodes.Get(0))
+    94         1          8.0      8.0      0.0  	clientApps.Start(ns.core.Seconds(2.0))
+    95         1          6.0      6.0      0.0  	clientApps.Stop(ns.core.Seconds(10.0))
+    96                                           
+    97         1        928.0    928.0      0.4  	ns.internet.Ipv4GlobalRoutingHelper.PopulateRoutingTables()
+    98                                           
+    99         1        179.0    179.0      0.1  	pointToPoint.EnablePcapAll("second")
+   100         1         52.0     52.0      0.0  	csma.EnablePcap ("second", csmaDevices.Get (1), True)
+   101                                           
+   102         1     200846.0 200846.0     86.9  	ns.core.Simulator.Run()
+   103         1       1843.0   1843.0      0.8  	ns.core.Simulator.Destroy()
