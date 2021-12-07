@@ -36,9 +36,10 @@ UCSB CS263 Project for Fall 2021
 > + Add Python profiler results to `results/Python` (time & memory)
 
 * **11/26**: 
-> + Prepare for presentation slides
+> + Use the ping6 scenario and use the system-wide profiler perf to track execution time usage of C++ and Python.
+> + Evaluate the execution time difference between two languages when the number of packets sent increases.
+> + Prepare for presentation slides. The slides: CS 263 presentation.pptx
 
-* **Continued**
-> - [x] study different python profiling tools
-> - [x] study different C++ profiling tools
 
+* **12/3**: 
+> + Use Massif to track heap/stack memory usage and upload results (massif.out.xxx) to `results/`.
