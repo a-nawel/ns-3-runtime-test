@@ -37,6 +37,7 @@ UCSB CS263 Project for Fall 2021
 
 * **11/26**: 
 > + Use the ping6 scenario and use the system-wide profiler perf to track execution time usage of C++ and Python.
+> + Upload the scenario file to `Scenario/`.
 > + Evaluate the execution time difference between two languages when the number of packets sent increases.
 > + Prepare for presentation slides. The slides: CS 263 presentation.pptx
 
