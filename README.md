@@ -35,6 +35,8 @@ UCSB CS263 Project for Fall 2021
 * **11/19**: 
 > + Add Python profiler results to `results/Python` (time & memory)
 
+* **11/26**: 
+> + Prepare for presentation slides
 
 * **Continued**
 > - [x] study different python profiling tools
